@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="supernova"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="alternate" type="application/json+oembed" href="https://www.jotform.com/oembed/?format=json&amp;url=http%3A%2F%2Fwww.jotform.com%2Fform%2F70805447367462" title="oEmbed Form"><link rel="alternate" type="text/xml+oembed" href="https://www.jotform.com/oembed/?format=xml&amp;url=http%3A%2F%2Fwww.jotform.com%2Fform%2F70805447367462" title="oEmbed Form">
+<meta property="og:title" content="JotForm" >
+<meta property="og:url" content="http://www.jotform.me/form/70805447367462" >
+<meta property="og:description" content="Please click the link to complete this form.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="HandheldFriendly" content="true" />
+<title>Rating Form</title>
+<link href="https://cdn.jotfor.ms/static/formCss.css?3.3.17995" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/nova.css?3.3.17995" />
+<link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.17995" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/566a91c2977cdfcd478b4567.css?"/>
+
+<link rel="stylesheet" type="text/css" href="static/css/styles/extra.css">
+<script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
+<script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.17995" type="text/javascript"></script>
+<script type="text/javascript" src="{% static 'js/extra.jss' %}"></script>
+<script src = "{% static 'js/prototype.forms.js' %}"></script>
+<script src = "{% static 'js/prototype-ui-form.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/rate.js' %}"></script>
+</head>
+<body>
+<form class="jotform-form" action="/rate/" method="post" name="f1" id="ratingform" accept-charset="utf-8">
+  {% csrf_token %}
+  <div class="form-all">
+    <ul class="form-section page-section">
+      
+      <li class="form-line" data-type="control_matrix" id="id_5">
+        <label class="form-label form-label-top" id="label_5" for="input_5"> Please submit the ratings of different courses in range of 1 to 5: </label>
+        <div id="cid_5" class="form-input-wide jf-required">
+          <table summary="" cellpadding="4" cellspacing="0" class="form-matrix-table" data-component="matrix" width = 400px>
+            <tbody>
+              <tr>
+                <th style="border:none;">
+                   
+                </th>
+                <th class="form-matrix-column-headers form-matrix-column_0">
+                  5
+                </th>
+                <th class="form-matrix-column-headers form-matrix-column_1">
+                  4
+                </th>
+                <th class="form-matrix-column-headers form-matrix-column_2">
+                  3
+                </th>
+                <th class="form-matrix-column-headers form-matrix-column_3">
+                  2
+                </th>
+                <th class="form-matrix-column-headers form-matrix-column_4">
+                  1
+                </th>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers" width = 200px>
+                  Electronics1
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_0_0" class="form-checkbox" type="radio" name="sub01" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_0_1" class="form-checkbox" type="radio" name="sub01" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_0_2" class="form-checkbox" type="radio" name="sub01" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_0_3" class="form-checkbox" type="radio" name="sub01" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_0_4" class="form-checkbox" type="radio" name="sub01" value="1" />
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers">
+                  Electronics2
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_1_0" class="form-checkbox" type="radio" name="sub02" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_1_1" class="form-checkbox" type="radio" name="sub02" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_1_2" class="form-checkbox" type="radio" name="sub02" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_1_3" class="form-checkbox" type="radio" name="sub02" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_1_4" class="form-checkbox" type="radio" name="sub02" value="1" />
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers">
+                  Electronics3
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_0" class="form-checkbox" type="radio" name="sub03" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_1" class="form-checkbox" type="radio" name="sub03" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_2" class="form-checkbox" type="radio" name="sub03" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_3" class="form-checkbox" type="radio" name="sub03" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_4" class="form-checkbox" type="radio" name="sub03" value="1" />
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers">
+                  Electronics4
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_0" class="form-checkbox" type="radio" name="sub04" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_1" class="form-checkbox" type="radio" name="sub04" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_2" class="form-checkbox" type="radio" name="sub04" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_3" class="form-checkbox" type="radio" name="sub04" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_4" class="form-checkbox" type="radio" name="sub04" value="1" />
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers">
+                  Electronics5
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_0" class="form-checkbox" type="radio" name="sub05" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_1" class="form-checkbox" type="radio" name="sub05" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_2" class="form-checkbox" type="radio" name="sub05" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_3" class="form-checkbox" type="radio" name="sub05" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_4" class="form-checkbox" type="radio" name="sub05" value="1" />
+                </td>
+              </tr>
+              <tr>
+                <th style="text-align:left;" class="form-matrix-row-headers">
+                  Electronics6
+                </th>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_0" class="form-checkbox" type="radio" name="sub06" value="5" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_1" class="form-checkbox" type="radio" name="sub06" value="4" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_2" class="form-checkbox" type="radio" name="sub06" value="3" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_3" class="form-checkbox" type="radio" name="sub06" value="2" />
+                </td>
+                <td style="text-align:center;" class="form-matrix-values">
+                  <input id="input_5_2_4" class="form-checkbox" type="radio" name="sub06" value="1" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+    <button onclick = "myFunction()" target="_blank" padding: 100px>Submit</button>
+  </div>
+</form>
+</body>
+</html>
+<script type="text/javascript">JotForm.ownerView=true;</script>
+
+{% endblock %}

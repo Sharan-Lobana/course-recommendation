@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+	<tr>
+		<th>Course</th>
+		<th>Rating</th>
+	</tr>
+	{% for row in mycourseslist%}
+	<tr>
+	    <td>{{row.0}}</td>
+	    <td>{{row.1}}</td>
+  	</tr>
+	{% endfor %}
+</table>
+
+</body>
+</html>
+
+{% endblock %}

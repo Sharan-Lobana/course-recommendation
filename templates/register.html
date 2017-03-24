@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}User Registration{% endblock %}
+{% block head %}User Registration{% endblock %}
+{% block content %}
+ <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Register</h3>
+                    </div>
+                    <div class="panel-body">
+<form method="post" class="form-horizontal" action=".">
+{% csrf_token %}
+<table>
+<div >
+	<tr>
+	    <td>{{ form.name.label_tag }}</td>
+	    <td>{{ form.name }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.enrollment.label_tag }}</td>
+	    <td>{{ form.enrollment }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.semester.label_tag }}</td>
+	    <td>{{ form.semester }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.branch.label_tag }}</td>
+	    <td>{{ form.branch }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.username.label_tag }}</td>
+	    <td>{{ form.username }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.email.label_tag }}</td>
+	    <td>{{ form.email }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.password1.label_tag }}</td>
+	    <td>{{ form.password1 }}</td>
+	</tr>
+</div>
+<div >
+	<tr>
+	    <td>{{ form.password2.label_tag }}</td>
+	    <td>{{ form.password2 }}</td>
+	</tr>
+</div>
+</table>
+<p class="bs-component">
+
+<center><input class="btn btn-success btn-sm" type="submit" value="Register" /></center>
+</p>
+<input type="hidden" name="next" value="/login/" />
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
