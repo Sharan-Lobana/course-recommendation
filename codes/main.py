@@ -1,43 +1,46 @@
 import load_data
 import numpy as np
+import random
 import normalizeRatings
 import Model_Trainer
+
 numcourses = load_data.numcourses
-courseslist = load_data.loadcoursesList()
+courseslist = load_data.course_list
+numfeatures = load_data.numfeatures
 
-new_user = np.zeros((load_data.Y.shape[0],1))
+#Initialize the rating for every course as zero for the new user
+new_user = np.zeros((1,load_data.Y.shape[1]))
 
-new_user[0] = 5
-new_user[11] = 5
-new_user[63] = 4
-new_user[69] = 3
+# Testing
+#Take ratings for some questions
+for i in range(0,numcourses/3):
+    ind = random.randint(0,numcourses-1)
+    new_user[0][ind] = random.randint(1,5)
 
-for i, rating in enumerate(new_user):
+print new_user
+for i, rating in enumerate(new_user[0]):
     if rating > 0:
-        print('Rated {:.0f} for {:s}\n'.format(rating[0], courseslist[i]))
+        print('Rated {:.0f} for {:s}\n'.format(rating, courseslist[i]))
 
 print new_user.shape
 print load_data.Y.shape
 
 
-for i in xrange(10):
+load_data.Y = np.vstack((load_data.Y, new_user))
+load_data.R = np.vstack((load_data.R, (new_user != 0).astype(int)))
 
-	load_data.Y = np.column_stack((new_user, load_data.Y))
-	load_data.R = np.column_stack(((new_user != 0).astype(int), load_data.R))
+# Normalize data and get test data
+[load_data.Y, Y_Mean, load_data.test_data_Y, load_data.test_data_R, load_data.R] = normalizeRatings.normalizeRatings(load_data.Y,load_data.R,0.20)
 
-	[load_data.Y, Y_Mean] = normalizeRatings.normalizeRatings(load_data.Y,load_data.R)
-
-
-	load_data.numstudents = load_data.Y.shape[1]
-
+load_data.numstudents = load_data.Y.shape[0]
 
 print "Training our model: \n Please keep patience \n"
 
-output = Model_Trainer.output[:,0] + Y_Mean.flatten()
+# TODO: append a column containing 1 to theta at the end for constant factor
+output = Model_Trainer.output[-1,:] + Y_Mean.flatten()
 
 outputarg = output.argsort()[::-1]
 
-for i in xrange(10):
+for i in xrange(numcourses):
     j = outputarg[i]
     print('Predicting rating {:.5f} for course {:s}'.format(output[j], courseslist[j]))
-    

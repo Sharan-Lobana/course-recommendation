@@ -44,11 +44,13 @@ def loadThetaList():
         print theta_list
     return theta_list
 
-#Debug
 course_list = loadcoursesList()
-Y = np.asarray(loadRatingValueList())
-R = np.asarray(loadRatedList())
+# Y and R are students*courses
+Y = np.asarray(loadRatingValueList())   #Contains values
+R = np.asarray(loadRatedList()) #Contains rated boolean vals
 Theta = np.asarray(loadThetaList())
+test_data_Y = None
+test_data_R = None
 
 numstudents = Y.shape[0]
 numparams = Theta.shape[1]
@@ -57,6 +59,7 @@ numfeatures = numparams
 
 X = np.random.rand(numcourses, numfeatures)
 
+#Debug
 print numstudents
 print numfeatures
 print numcourses
