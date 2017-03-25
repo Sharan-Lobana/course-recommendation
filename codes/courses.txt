@@ -1,0 +1,31 @@
+1 Computer Architecture and Microprocessors csn-1 3
+2 Signals and Systems csn-2 3
+3 Data Structure Laboratory csn-3 3
+4 Object oriented analysis and design csn-4 3
+5 Engineering Thermodynamics mec-1 3
+6 Design and Analysis of Algorithms csn-6 4
+7 Operating Systems csn-7 4
+8 System Software csn-8 4
+9 Digital Electronic Circuits Laboratory csn-9 4
+10 Data Base Management Systems csn-10 5
+11 Theory of Computation csn-11 5
+12 Computer Networks csn-12 5
+13 Computer Networks Laboratory csn-13 5
+14 Technical Communication csn-14 5
+15 Computer Graphics csn-15 5
+16 Embedded Programming csn-16 5
+17 Network Programming csn-17 5
+18 Economics hss-1 3
+19 Sociology hss-2 3
+20 Strategic Human Resource Management mgm-1 5
+21 Banking and Finance mgm-2 5
+22 Interpersonal Dynamics mgm-3 5
+23 Market Research mgm-4 5
+24 Innovative Business Models mgm-5 5
+25 Environemental Economics mgm-6 5
+26 Compiler Laboratory csn-18 6
+27 Compiler Design csn-19 6
+29 Principles of Programming Language csn-20 6
+29 Lab-based Project csn-21 6
+30 Probability csn-22 6
+31 Machine Learning csn-23 6
