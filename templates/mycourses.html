@@ -14,7 +14,7 @@ table {
 td, th {
     border: 1px solid #dddddd;
     text-align: left;
-    padding: 8px;
+    padding: 4px;
 }
 
 tr:nth-child(even) {
@@ -28,11 +28,13 @@ tr:nth-child(even) {
 	<tr>
 		<th>Course</th>
 		<th>Rating</th>
+    <th> Semester</th>
 	</tr>
 	{% for row in mycourseslist%}
 	<tr>
-	    <td>{{row.0}}</td>
+	    <td class="style1">{{row.0}}</td>
 	    <td>{{row.1}}</td>
+      <td>{{row.2}}</td>
   	</tr>
 	{% endfor %}
 </table>

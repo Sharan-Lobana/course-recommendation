@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+# from django.contrib.auth.models import User
 # Create your models here.
 class UserTable(models.Model):
 	# Fields of the database here
@@ -20,3 +20,33 @@ class UserTable(models.Model):
 	semester = models.CharField(max_length=2, choices = semester_choices, default = '1')
 	branch = models.CharField(max_length=5, choices = branch_choices, default = '1')
 	hasrated = models.BooleanField(default = False)
+
+	def __str__(self):
+		print self.name
+
+class Course(models.Model):
+	course_name = models.CharField(
+		max_length=200,
+		null=False,
+	)
+	course_id = models.CharField(max_length=10)
+	semester = models.IntegerField(default=0)
+
+	def __str__(self):
+		return self.course_name
+
+class CourseRating(models.Model):
+	user_id = models.ForeignKey(
+		'UserTable',
+		on_delete=models.CASCADE,
+	)
+	course_id = models.ForeignKey(
+		'Course',
+		on_delete = models.CASCADE,
+	)
+	rating = models.IntegerField(
+		default=0,
+	)
+
+	def __str__(self):
+		return "User: "+self.user_id.name+", Course: "+self.course_id.course_name+", Rating "+str(self.rating)

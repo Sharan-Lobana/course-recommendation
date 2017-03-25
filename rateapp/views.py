@@ -24,6 +24,16 @@ def loginview(request):
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
+
+		user = None
+		# Handle if the username is an emailid
+		if '@' in username:
+			try:
+				user = User.objects.get(email=username)
+				username = user.username
+			except Exception as e:
+				print e
+				return render(request,'login.html',{'form':LoginForm(), 'loginerror':True})
 		print "NEW METHOD ",username,password
 		user = authenticate(username=username, password=password)
 		if user is not None:
@@ -117,7 +127,7 @@ def rate(request):
 				if(i != 6):
 					myfile.write(',')
 				else:
-					myfile.write('\n')	
+					myfile.write('\n')
 			myfile.close()
 			usert.hasrated = True
 			usert.save()
@@ -132,12 +142,18 @@ def rate(request):
 @login_required(login_url="login/")
 @csrf_protect
 def mycourses(request):
-	list_of_courses = [
-		['CSE', 10],
-		['CSE', 10],
-		['CSE', 10],
-		['CSE', 10],
-		['CSE', 10],
-		['CSE', 10]
-		]
-	return render(request,'mycourses.html',{'mycourseslist':list_of_courses})
+	try:
+		user = User.objects.get(id=request.user.id)
+		user_t = UserTable.objects.get(username=user.username)
+
+		list_of_courses = []
+		for r in CourseRating.objects.filter(user_id=user_t.id):
+			c = Course.objects.get(id=r.course_id.id)
+			temp = [c.course_name,r.rating,c.semester]
+			list_of_courses.append(temp)
+		# Keep courses of most recent semester at the top
+		list_of_courses.sort(key=lambda x: -x[2])
+		return render(request,'mycourses.html',{'mycourseslist':list_of_courses})
+	except Exception as e:
+		print e
+		# TODO: return appropriate response
