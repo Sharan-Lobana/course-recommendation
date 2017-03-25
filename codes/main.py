@@ -26,11 +26,19 @@ print new_user.shape
 print load_data.Y.shape
 
 
-load_data.Y = np.vstack((load_data.Y, new_user))
-load_data.R = np.vstack((load_data.R, (new_user != 0).astype(int)))
+# TODO: correct the bug of mismatch of array dimensions on uncommenting
+# the following code
+# load_data.Y = np.vstack((load_data.Y, new_user))
+# load_data.R = np.vstack((load_data.R, (new_user != 0).astype(int)))
 
 # Normalize data and get test data
-[load_data.Y, Y_Mean, load_data.test_data_Y, load_data.test_data_R, load_data.R] = normalizeRatings.normalizeRatings(load_data.Y,load_data.R,0.40)
+[
+    load_data.Y,
+    Y_Mean,
+    load_data.test_data_Y,
+    load_data.test_data_R,
+    load_data.R
+] = normalizeRatings.normalizeRatings(load_data.Y,load_data.R,0.20)
 
 load_data.numstudents = load_data.Y.shape[0]
 
@@ -52,17 +60,41 @@ for i in xrange(numcourses):
 testDataY = load_data.test_data_Y
 testDataR = load_data.test_data_R
 print "Starting error computation "
+print "Printing TEST DATA Y"
 print testDataY
+print "Printing TEST DATA R"
 print testDataR
+print "Printing output"
+print output
 
-error = np.power(output*testDataR - testDataY,2)
-
-print error
-total_error = np.sum(error)
-print total_error
 numTestInstances = np.sum(testDataR)
-print numTestInstances
-averageSqError = total_error/numTestInstances
-print averageSqError
+
+print "=== Computing Error matrix ==="
+error = np.power(Model_Trainer.output*testDataR - testDataY,2)
+absoluteerror = np.absolute(np.rint(Model_Trainer.output*testDataR) - testDataY)
+print "=== Error matrix computed successfully ==="
+
+total_absolute_error = np.sum(absoluteerror)
+total_square_error = np.sum(error)
+
+averageAbsoluteError = total_absolute_error/numTestInstances
+averageSqError = total_square_error/numTestInstances
 standaverageError = pow(averageSqError,0.5)
+
+print "Total absolute error: ",
+print total_absolute_error
+
+print "Total square error: ",
+print total_square_error
+
+print "Number of Test Instances: ",
+print numTestInstances
+
+print "Average Square Error: ",
+print averageSqError
+
+print "Average Absolute Error: ",
+print averageAbsoluteError
+
+print "Standard Error: ",
 print standaverageError

@@ -18,7 +18,6 @@ import os
 # Added a new login view
 # Not allowed to view without authenticating
 
-MAX_SEM_NUM = 6
 @csrf_protect
 def loginview(request):
 	loginerror = False

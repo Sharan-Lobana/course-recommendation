@@ -10,8 +10,8 @@ numstudents = load_data.numstudents
 numcourses = load_data.numcourses
 numfeatures = load_data.numfeatures
 
-reg = 10   #For limiting values of theta and course features
-reg2 = 0 #For keeping modified values of theta close to original values
+reg = 1000    #For limiting values of theta and course features
+reg2 = 10 #For keeping modified values of theta close to original values
 
 Y = Y[:numstudents,:numcourses]
 R = R[:numstudents,:numcourses]

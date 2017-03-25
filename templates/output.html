@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static css/output.css %}">
+
+<body>
+
+<h2 class="style2">These are the courses are recommended to you by the system</h2>
+<section>
+<div id="list2">
+   <ol>
+   	{% for row in list_of_recommendations %}
+      <li><p><em>{{row.0}}</em>{{row.1}}<em>{{row.2}}</em></p></li>
+    {% endfor %}
+   </ol>
+</div>
+</section>
+</body>
+</html>
+{% endblock %}
