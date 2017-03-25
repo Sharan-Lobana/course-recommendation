@@ -1,8 +1,9 @@
 import numpy as np
 
+# Load the list of courses
+# TODO: modify the semester to point to correct semester in courses.txt
 def loadcoursesList():
-
-    with open("dummycourses.txt") as course_file:
+    with open("courses.txt") as course_file:
         course_list = []
 
         for i,course in enumerate(course_file.readlines()):
@@ -11,44 +12,39 @@ def loadcoursesList():
             course_id = course_detail[-2]
             course_name = course_detail[:-2]
             course_list.append([course_id," ".join(course_name),semester])
-        print course_list
     return course_list
 
-def loadRatedList():
-    with open("rated.csv") as rated:
-        rated_list = []
-        for i,rate in enumerate(rated.readlines()):
-            temp = rate.split(',')
-            temp = [int(x) for x in temp]
-            rated_list.append(temp)
-        print rated_list
-    return rated_list
-
-def loadRatingValueList():
-    with open("ratingvalues.csv") as rated:
+def loadData():
+    with open("electrical.csv") as rated:
         rating_list = []
-        for i,rate in enumerate(rated.readlines()):
-            temp = rate.split(',')
-            temp = [int(x) for x in temp]
-            rating_list.append(temp)
-        print rating_list
-    return rating_list
-
-def loadThetaList():
-    with open("userTheta.csv") as theta:
+        rated_list = []
         theta_list = []
-        for i,theta in enumerate(theta.readlines()):
-            temp = theta.split(',')
-            temp = [int(x) for x in temp]
-            theta_list.append(temp)
-        print theta_list
-    return theta_list
+        for i,rate in enumerate(rated.readlines()):
+            # Skip the header row
+            if(i == 0):
+                continue
+            temp = rate.split(',')
+
+            rating = temp[2:31]
+            rating = [int(i) if i is not '' else 0 for i in rating]
+            rating_list.append(rating)
+
+            rated = [1 if i is not 0 else 0 for i in rating]
+            rated_list.append(rated)
+
+            theta_params = temp[31:]
+            local_theta = [int(x) if x is not '' else 0 for x in theta_params]
+            theta_list.append(local_theta)
+    return rating_list,rated_list,theta_list
 
 course_list = loadcoursesList()
+
 # Y and R are students*courses
-Y = np.asarray(loadRatingValueList())   #Contains values
-R = np.asarray(loadRatedList()) #Contains rated boolean vals
-Theta = np.asarray(loadThetaList())
+data = loadData()
+Y = np.asarray(data[0])   #Contains values
+R = np.asarray(data[1]) #Contains rated boolean vals
+Theta = np.asarray(data[2])
+
 test_data_Y = None
 test_data_R = None
 
@@ -60,6 +56,6 @@ numfeatures = numparams
 X = np.random.rand(numcourses, numfeatures)
 
 #Debug
-print numstudents
-print numfeatures
-print numcourses
+print "NumStudents: "+str(numstudents)
+print "NumFeatures: "+str(numfeatures)
+print "NumCourses: "+str(numcourses)

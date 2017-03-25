@@ -9,19 +9,23 @@ R = load_data.R
 numstudents = load_data.numstudents
 numcourses = load_data.numcourses
 numfeatures = load_data.numfeatures
-reg = 0
+
+reg = 10   #For limiting values of theta and course features
+reg2 = 0 #For keeping modified values of theta close to original values
 
 Y = Y[:numstudents,:numcourses]
 R = R[:numstudents,:numcourses]
 
 X = np.random.randn(numcourses, numfeatures)
-Theta = np.random.randn(numstudents, numfeatures)
+Theta = load_data.Theta
+print Theta
+print "Before concatenate"
 initial_parameters = np.concatenate((X.reshape(X.size, order='F'), Theta.reshape(Theta.size, order='F')))
 
 def J(initial_parameters):
-    return ccf.costfunction(initial_parameters, Y, R, numstudents, numcourses, numfeatures, reg)
+    return ccf.costfunction(initial_parameters, Y, R, numstudents, numcourses, numfeatures, reg, reg2, Theta)
 
-maxiter = 200
+maxiter = 2000
 options = {'disp': True, 'maxiter':maxiter}
 
 result = minimize(J, x0=initial_parameters, options=options, method="L-BFGS-B", jac=True )
