@@ -1,0 +1,10 @@
+1 Computer Architecture and Microprocessors csn-1 3
+2 Signals and Systems csn-2 3
+3 Data Structure Laboratory csn-3 3
+4 Object oriented analysis and design csn-4 3
+5 Engineering Thermodynamics mec-1 3
+6 Design and Analysis of Algorithms csn-6 4
+7 Operating Systems csn-7 4
+8 System Software csn-8 4
+9 Digital Electronic Circuits Laboratory csn-9 4
+10 Data Base Management Systems csn-10 5

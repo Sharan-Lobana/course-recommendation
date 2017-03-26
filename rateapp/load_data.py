@@ -15,7 +15,7 @@ def loadcoursesList():
     return course_list
 
 def loadData():
-    with open("electrical.csv") as rated:
+    with open("/home/sharan/Desktop/ProStuff/Codes/githubcodes/courserecommendation/rateapp/electrical.csv") as rated:
         rating_list = []
         rated_list = []
         theta_list = []
@@ -40,18 +40,29 @@ def loadData():
 course_list = loadcoursesList()
 
 # Y and R are students*courses
-data = loadData()
-Y = np.asarray(data[0])   #Contains values
-R = np.asarray(data[1]) #Contains rated boolean vals
-Theta = np.asarray(data[2])
+def getDataVal():
+    data = loadData()
+    Y = np.asarray(data[0])   #Contains values
+    R = np.asarray(data[1]) #Contains rated boolean vals
+    Theta = np.asarray(data[2])
+    return Y,R,Theta
+
+
+Y,R,Theta = getDataVal()
+
+def getParamValues():
+    numstudents = Y.shape[0]
+    numparams = Theta.shape[1]
+    numcourses = len(course_list)
+    numfeatures = numparams
+
+    return numstudents, numparams, numcourses, numfeatures
 
 test_data_Y = None
 test_data_R = None
 
-numstudents = Y.shape[0]
-numparams = Theta.shape[1]
-numcourses = len(course_list)
-numfeatures = numparams
+
+numstudents, numparams, numcourses, numfeatures = getParamValues()
 
 X = np.random.rand(numcourses, numfeatures)
 

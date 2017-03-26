@@ -1,0 +1,29 @@
+1 Electrical Machines 1 ee-1 3
+2 Digital Electronics and Circuits ee-2 3
+3 Design of Electronic Circuits ee-3 3
+4 Control Systems ee-4 3
+5 Engineering Analysis and Design ee-5 3
+6 Economics ee-6 3
+7 Sociology ee-7 3
+8 Electrical Machines 2 ee-8 4
+9 Microprocessors and Peripheral Devices ee-9 4
+10 Power Transmission and Distribution ee-10 4
+11 Applied Instrumentation ee-11 4
+12 Electrical and Electronic Materials ee-12 4
+13 Power System Analysis and Control ee-13 5
+14 Power Electronics ee-14 5
+15 Advanced Control Systems ee-15 5
+16 Technical Communication ee-16 5
+17 Digital Signal Processing ee-17 5
+18 Data Structures ee-18 5
+19 Embedded Systems ee-19 5
+20 Microcontrollers ee-20 5
+21 Digital Control Systems ee-21 5
+22 Industry Oriented Problem ee-22 6
+23 Electric Drives ee-23 6
+24 Protection and Switchgear ee-24 6
+25 General Viva ee-25 6
+26 Educational Tour ee-26 6
+27 Fuzzy Logics ee-27 6
+28 Optimization Technique ee-28 6
+29 Utilization and Traction ee-29 6

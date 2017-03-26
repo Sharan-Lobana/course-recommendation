@@ -18,8 +18,6 @@ R = R[:numstudents,:numcourses]
 
 X = np.random.randn(numcourses, numfeatures)
 Theta = load_data.Theta
-print Theta
-print "Before concatenate"
 initial_parameters = np.concatenate((X.reshape(X.size, order='F'), Theta.reshape(Theta.size, order='F')))
 
 def J(initial_parameters):
@@ -42,16 +40,18 @@ successful = result['success']
 
 print "\n\n\nMin Value of the objective function: ",
 print min_val
-print "\nValue of gradient during exit: ",
-print grad_val
-print "\nExit Message: ",
-print message
-print "\nSuccess Code: ",
-print successful
-print "\n\n\n"
+# print "\nValue of gradient during exit: ",
+# print grad_val
+# print "\nExit Message: ",
+# print message
+# print "\nSuccess Code: ",
+# print successful
+# print "\n\n\n"
 
 X = np.reshape(params[:numcourses * numfeatures], (numcourses, numfeatures), order='F')
 Theta = np.reshape(params[numcourses * numfeatures:], (numstudents, numfeatures), order='F')
 output = np.dot(Theta, X.T)
 
-print output
+# print "\n\n\n\n\n=== Output matrix computed by optimization ===\n\n\n\n\n"
+# print output
+# print "\n\n\n\n\n=== Output printed ===\n\n\n\n\n" 

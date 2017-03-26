@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .forms import *
 from .models import *
-
+import main as m
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -117,22 +117,41 @@ def rate(request):
 		user = User.objects.get(id=request.user.id)
 		usert = UserTable.objects.get(username=user.username)
 		print request.POST
-		if(not usert.hasrated):
-			myfile = open(os.getcwd()+os.sep+'rateapp'+os.sep+'data.txt', "a+")
-			myfile.write(str(request.user.id)+',')
-			prefix = 'sub0'
-			for i in range(1,7):
-				curKey = prefix+str(i)
-				myfile.write(request.POST.get(curKey,'0'))
-				if(i != 6):
-					myfile.write(',')
-				else:
-					myfile.write('\n')
-			myfile.close()
-			usert.hasrated = True
-			usert.save()
-		else:
-			print "User has already rated"
+
+		# user_val will contain user's prior ratings and current ratings
+		user_val = []
+		# 29 since there are 29 subjects
+		# Initialize user_val with 0
+		for i in range(29):
+			user_val.append(0)
+
+		# Get the value of previous ratings from the database
+		ratings = CourseRating.objects.filter(user_id=usert)
+		print "Reached here"
+		for i in ratings:
+			print "Ratings are: ",
+			print i
+			course = Course.objects.get(id=i.course_id.id)
+			# Course id has the syntax ee-12
+			user_val[int(course.course_id[3:])] = i.rating
+
+		prefix = 'sub0'
+		# TODO: Modify this range
+		for i in range(23,29):
+			curKey = prefix+str(i)
+			user_val[i] = int(request.POST.get(curKey,'0'))
+
+		print "The value of user_val is: ",
+		print user_val
+		output, outputarg, courseslist = m.computeRecommendation()
+		reco_list = []
+		for i in xrange(numcourses):
+			temp = []
+			j = outputarg[i];
+
+		# Do someting with user_val for computation
+		# user_val now contains the rated value of user params
+		usert.save()
 	else:
 		print "Request is not post"
 	context = {}
